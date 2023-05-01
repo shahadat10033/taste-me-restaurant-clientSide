@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="mt-5 pt-5">
-      <Form className="w-50 border border-5 mx-auto mt-5 p-5">
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+    <div
+      className="d-flex justify-content-center align-items-center "
+      style={{ height: "100vh" }}
+    >
+      <Form className="w-50 border border-5  mt-5 p-5">
+        <Form.Group className="mb-3">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
@@ -17,7 +20,7 @@ const Login = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -40,6 +43,28 @@ const Login = () => {
             <span className="underline ">Register here</span>
           </Link>
         </Form.Text>
+        <br />
+        <button className="btn btn-light">
+          <span>
+            <img
+              src="google.svg"
+              alt=""
+              style={{ width: 20, height: 20 }}
+            ></img>
+          </span>
+          google sign in
+        </button>
+
+        <button className="btn btn-light">
+          <span>
+            <img
+              src="github.png"
+              alt=""
+              style={{ width: 20, height: 20 }}
+            ></img>
+          </span>
+          github sign in
+        </button>
       </Form>
     </div>
   );
