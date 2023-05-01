@@ -26,7 +26,7 @@ const Register = () => {
           <Form.Group className="mb-3">
             <Form.Label>Photo URL</Form.Label>
             <Form.Control
-              type="image"
+              type="text"
               name="image"
               placeholder="photo url"
               required
