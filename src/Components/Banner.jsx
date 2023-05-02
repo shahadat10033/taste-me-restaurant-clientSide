@@ -3,7 +3,7 @@ import React from "react";
 const Banner = () => {
   return (
     <div
-      className="bg-image card shadow-1-strong "
+      className="bg-image card shadow-1-strong   h-100"
       style={{
         marginTop: "56px",
         backgroundImage: 'url("Homebanner.jpg")',

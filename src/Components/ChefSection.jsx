@@ -2,13 +2,15 @@ import React from "react";
 
 const ChefSection = () => {
   return (
-    <div className="bg-dark row  py-2">
+    <div className=" bg-light row  py-2">
       <div className="col-md-4">
-        <div className=" bg-light text-dark rounded-2 text-center m-1">
-          <h3 className="pb-5">Name:{}</h3>
-          <div className="d-flex align-items-center justify-content-between">
-            <img src="" alt="" style={{ width: 100, height: 200 }}></img>
-            <div>
+        <div className=" bg-success text-light rounded-4  m-1">
+          <h3 className="pb-5 text-center">Name:{}</h3>
+          <div className="row r ">
+            <div className="col-md-6">
+              <img src="" alt="" className="image-fluid me-3"></img>
+            </div>
+            <div className="col-md-6">
               <p className="fw-semibold pb-4">Years of experience:{} years</p>
               <p className="fw-semibold">Numbers of recipes:{} items</p>
               <p>
@@ -23,8 +25,8 @@ const ChefSection = () => {
               </p>
             </div>
           </div>
-          <div className="py-4">
-            <button className="btn btn-dark  ">View Recipes</button>
+          <div className="py-4 text-center">
+            <button className="btn btn-light  ">View Recipes</button>
           </div>
         </div>
       </div>
