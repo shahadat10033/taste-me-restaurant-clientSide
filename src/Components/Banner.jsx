@@ -10,11 +10,10 @@ const Banner = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
         backgroundSize: "cover",
-        height: "fit",
       }}
     >
       <div className="card-body text-light text-center">
-        <h5 className="card-title">
+        <h5 className="card-title my-5 py-5">
           <span className="fst-italic fs-4 my-3">Welcome to our</span>
           <br />
           <span className="fw-bold fs-1 my-5">RESTAURANT</span>
@@ -23,13 +22,9 @@ const Banner = () => {
           Come for the food, stay for the memories .<br /> our restaurant is the
           perfect place to create unforgettable moments.
         </small>
-        <div className="my-5">
-          <button href="#!" className="btn btn-outline-light">
-            BOOK TABLE
-          </button>
-          <button href="#!" className="btn btn-outline-light">
-            VIEW MENU
-          </button>
+        <div className="my-5 py-5">
+          <button className="btn btn-outline-light me-3">BOOK TABLE</button>
+          <button className="btn btn-outline-light">VIEW MENU</button>
         </div>
       </div>
     </div>
