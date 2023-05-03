@@ -9,6 +9,8 @@ import Login from "./Routes/Login";
 import Register from "./Routes/Register";
 import ErrorPg from "./Components/ErrorPg";
 import RecipePage from "./Routes/RecipePage";
+import AuthProvider from "./firebase/AuthProvider";
+import PrivateRoute from "./Routes/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/:id",
-        element: <RecipePage></RecipePage>,
+        element: (
+          <PrivateRoute>
+            <RecipePage></RecipePage>
+          </PrivateRoute>
+        ),
         loader: ({ params }) => {
           return fetch(`http://localhost:5000/data/${params.id}`);
         },
@@ -44,6 +50,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

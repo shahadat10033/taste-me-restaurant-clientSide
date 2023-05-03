@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../firebase/AuthProvider";
 const MenuBar = () => {
-  const user = null;
+  const { user, logOut } = useContext(AuthContext);
+
   return (
     <div className="sticky-top  ">
       <Navbar
@@ -12,7 +14,7 @@ const MenuBar = () => {
         className=" px-5  "
         style={{ backgroundColor: "#00000080" }}
       >
-        <Navbar.Brand as={NavLink} to="/" className="text-warning fw-bold fs-2">
+        <Navbar.Brand as={Link} to="/" className="text-warning fw-bold fs-2">
           Taste Me Restaurant
         </Navbar.Brand>
 
@@ -43,15 +45,38 @@ const MenuBar = () => {
             >
               Blog
             </NavLink>
-            <span className="ps-5">
+            <span className="mt-2">
               {user ? (
-                <span>
-                  <span>user.photo</span>
-                  <button className="btn btn-light ">Log out</button>
+                <span className="ms-5">
+                  <span className="me-2">
+                    <img
+                      src={user.user?.photoURL}
+                      alt=""
+                      style={{
+                        width: 40,
+                        height: 40,
+                        borderRadius: 50,
+
+                        border: "2px solid yellow",
+                      }}
+                    />
+                  </span>
+                  <button className="btn btn-light " onClick={logOut}>
+                    Log out
+                  </button>
                 </span>
               ) : (
-                <NavLink to="/login">
-                  <button className="btn btn-light ">Log in</button>
+                <NavLink
+                  to="/login"
+                  className={({ isActive, isPending }) =>
+                    isPending
+                      ? ""
+                      : isActive
+                      ? " text-decoration-none mt-2 text-primary ps-5"
+                      : "ps-5 text-decoration-none mt-2 text-light"
+                  }
+                >
+                  <span style={{ marginTop: 10 }}>Log in</span>
                 </NavLink>
               )}
             </span>

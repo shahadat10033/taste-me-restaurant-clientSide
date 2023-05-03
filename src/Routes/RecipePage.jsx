@@ -4,15 +4,17 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "@smastrom/react-rating/style.css";
 import { Rating } from "@smastrom/react-rating";
+import Marquee from "react-fast-marquee";
 
 const RecipePage = () => {
   const singleData = useLoaderData();
   const notify = () => toast("wowww.its a wonderful dish!");
-  console.log(singleData);
+
   return (
     <div>
       {/* banner section */}
-      <div className="row mb-5 text-white bg-dark">
+
+      <div className="row mb-2 text-white bg-dark">
         <div className="col-md-4">
           <div>
             <img
@@ -46,6 +48,11 @@ const RecipePage = () => {
       </div>
 
       {/* recipe section */}
+      <Marquee>
+        <h2 className="text-center text-warning fw-bold fs-1">
+          Some Delecious Recipes
+        </h2>
+      </Marquee>
       <div className="row">
         {singleData.recipes.map((recipe) => (
           <div className="col-md-4" key={recipe.recipeName}>
