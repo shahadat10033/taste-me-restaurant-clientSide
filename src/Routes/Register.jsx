@@ -10,7 +10,7 @@ const Register = () => {
         className="d-flex justify-content-center align-items-center "
         style={{ height: "100vh" }}
       >
-        <Form className="w-50 border border-5 mx-auto mt-5 p-5">
+        <Form className="w-50 border border-5 mx-auto mb-5 p-5">
           <Form.Text className="fw-bold fs-3 ">Registration Form</Form.Text>
           <br />
           <br />

@@ -5,7 +5,7 @@ import Stats from "../Components/Stats";
 import About from "../Components/About";
 const Home = () => {
   return (
-    <div>
+    <div className="bg-dark">
       <Banner></Banner>
       <ChefSection></ChefSection>
       <About></About>

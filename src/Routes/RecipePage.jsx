@@ -2,6 +2,8 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "@smastrom/react-rating/style.css";
+import { Rating } from "@smastrom/react-rating";
 
 const RecipePage = () => {
   const singleData = useLoaderData();
@@ -57,7 +59,14 @@ const RecipePage = () => {
               <div className="card-body">
                 <h5 className="card-title">{recipe.recipeName}</h5>
                 <p className="card-text">
-                  <p>{recipe.ratings}</p>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <Rating
+                      style={{ maxWidth: 180 }}
+                      value={recipe.ratings}
+                      readOnly
+                    />
+                    <span>{recipe.ratings}</span>
+                  </div>
                   <p className="fw-semibold">Ingredients</p>
                   <ul>
                     <li>1. {recipe.ingredients[0]}</li>
@@ -70,7 +79,7 @@ const RecipePage = () => {
                 <h4>cooking method:</h4>
                 <p className="card-text">{recipe.cookingMethod}</p>
                 <button className="btn btn-primary" onClick={notify}>
-                  Favourite
+                  Favourites
                 </button>
                 <ToastContainer />
               </div>
