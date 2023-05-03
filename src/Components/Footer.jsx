@@ -45,7 +45,7 @@ const Footer = () => {
       </div>
       <small>
         © 2023, All Rights Reserved, Made by
-        <span className="  text-warning">Md Shahadat Hossain</span>
+        <span className="  text-warning"> Md Shahadat Hossain</span>
       </small>
     </div>
   );

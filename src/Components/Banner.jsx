@@ -5,7 +5,6 @@ const Banner = () => {
     <div
       className="bg-image card shadow-1-strong   h-100"
       style={{
-        marginTop: "56px",
         backgroundImage: 'url("Homebanner.jpg")',
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",

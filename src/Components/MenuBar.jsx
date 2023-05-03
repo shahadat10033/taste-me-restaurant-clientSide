@@ -1,25 +1,48 @@
 import React from "react";
-
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const MenuBar = () => {
   const user = null;
   return (
     <div className="fixed-top  ">
-      <Navbar bg="dark" variant="dark" expand="lg" className=" px-5  ">
-        <Link to="/">
-          <Navbar.Brand>Taste Me Restaurant</Navbar.Brand>
-        </Link>
+      <Navbar
+        variant="dark"
+        expand="lg"
+        className=" px-5  "
+        style={{ backgroundColor: "#00000080" }}
+      >
+        <Navbar.Brand as={NavLink} to="/" className="text-warning fw-bold fs-2">
+          Taste Me Restaurant
+        </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
-            <Nav.Link href="#home" className="ps-5  ">
+            <NavLink
+              to="/"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? ""
+                  : isActive
+                  ? " text-decoration-none mt-2 text-primary ps-5"
+                  : "ps-5 text-decoration-none mt-2 text-light"
+              }
+            >
               Home
-            </Nav.Link>
-            <Nav.Link href="#link" className="ps-5  ">
+            </NavLink>
+            <NavLink
+              to="/blog"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? ""
+                  : isActive
+                  ? " text-decoration-none mt-2 text-primary ps-5"
+                  : "ps-5 text-decoration-none mt-2 text-light"
+              }
+            >
               Blog
-            </Nav.Link>
+            </NavLink>
             <span className="ps-5">
               {user ? (
                 <span>
@@ -27,9 +50,9 @@ const MenuBar = () => {
                   <button className="btn btn-light ">Log out</button>
                 </span>
               ) : (
-                <Link to="/login">
+                <NavLink to="/login">
                   <button className="btn btn-light ">Log in</button>
-                </Link>
+                </NavLink>
               )}
             </span>
           </Nav>

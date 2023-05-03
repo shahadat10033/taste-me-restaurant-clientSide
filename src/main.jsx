@@ -8,6 +8,7 @@ import Blog from "./Routes/Blog";
 import Login from "./Routes/Login";
 import Register from "./Routes/Register";
 import ErrorPg from "./Components/ErrorPg";
+import RecipePage from "./Routes/RecipePage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,13 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/:id",
+        element: <RecipePage></RecipePage>,
+        loader: ({ params }) => {
+          return fetch(`http://localhost:5000/data/${params.id}`);
+        },
       },
     ],
   },
