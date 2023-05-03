@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 const MenuBar = () => {
   const user = null;
   return (
-    <div className="fixed-top  ">
+    <div className="sticky-top  ">
       <Navbar
         variant="dark"
         expand="lg"

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ChefSection = () => {
   const [allData, setAllData] = useState([]);
@@ -50,7 +51,9 @@ const ChefSection = () => {
               </div>
             </div>
             <div className="py-4 text-center">
-              <button className="btn btn-light  ">View Recipes</button>
+              <Link to={`/${data.id} `}>
+                <button className="btn btn-light  ">View Recipes</button>
+              </Link>
             </div>
           </div>
         </div>
