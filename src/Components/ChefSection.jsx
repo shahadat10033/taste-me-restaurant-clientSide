@@ -7,7 +7,9 @@ const ChefSection = () => {
   const [allData, setAllData] = useState([]);
   const [loader, setLoader] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/data/")
+    fetch(
+      "https://chef-recipe-hunting-server-side-shahadat10033.vercel.app/data/"
+    )
       .then((res) => res.json())
       .then((data) => {
         setLoader(false);

@@ -61,7 +61,7 @@ const RecipePage = () => {
           Some Delecious Recipes
         </h2>
       </Marquee>
-      <div className="row">
+      <div className="row mb-3">
         {singleData.recipes.map((recipe) => (
           <div className="col-md-4" key={recipe.recipeName}>
             <div className="card mx-1 col-md-height" style={{ width: "100%" }}>

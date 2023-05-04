@@ -5,10 +5,15 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../firebase/AuthProvider";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
+import { Spinner } from "react-bootstrap";
 
 const MenuBar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, loader } = useContext(AuthContext);
+  if (loader) {
+    return <Spinner animation="border" variant="warning" />;
+  }
 
+  console.log("from menu", user);
   return (
     <div className="sticky-top  ">
       <Navbar
@@ -54,10 +59,10 @@ const MenuBar = () => {
                   <span
                     className="me-2"
                     data-tooltip-id="my-tooltip"
-                    data-tooltip-content="Hello world!"
+                    data-tooltip-content={user?.displayName}
                   >
                     <img
-                      src={user.user?.photoURL}
+                      src={user?.photoURL}
                       alt=""
                       style={{
                         width: 40,

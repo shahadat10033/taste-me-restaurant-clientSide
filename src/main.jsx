@@ -41,7 +41,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/data/${params.id}`);
+          return fetch(
+            `https://chef-recipe-hunting-server-side-shahadat10033.vercel.app/data/${params.id}`
+          );
         },
       },
     ],
