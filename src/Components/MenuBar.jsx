@@ -10,7 +10,7 @@ import { Spinner } from "react-bootstrap";
 const MenuBar = () => {
   const { user, logOut, loader } = useContext(AuthContext);
   if (loader) {
-    return <Spinner animation="border" variant="warning" />;
+    <Spinner animation="border" variant="warning" />;
   }
 
   console.log("from menu", user);
@@ -35,8 +35,8 @@ const MenuBar = () => {
                 isPending
                   ? ""
                   : isActive
-                  ? " text-decoration-none mt-2 text-primary ps-5"
-                  : "ps-5 text-decoration-none mt-2 text-light"
+                  ? " text-decoration-none mt-3 text-primary ps-5"
+                  : "ps-5 text-decoration-none mt-3 text-light"
               }
             >
               Home
@@ -47,8 +47,8 @@ const MenuBar = () => {
                 isPending
                   ? ""
                   : isActive
-                  ? " text-decoration-none mt-2 text-primary ps-5"
-                  : "ps-5 text-decoration-none mt-2 text-light"
+                  ? " text-decoration-none mt-3 text-primary ps-5"
+                  : "ps-5 text-decoration-none mt-3 text-light"
               }
             >
               Blog
@@ -85,11 +85,12 @@ const MenuBar = () => {
                     isPending
                       ? ""
                       : isActive
-                      ? " text-decoration-none mt-2 text-primary ps-5"
-                      : "ps-5 text-decoration-none mt-2 text-light"
+                      ? " text-decoration-none  text-primary ms-5 btn  btn-warning text-light"
+                      : "ms-5 text-decoration-none  text-light btn btn-light text-dark"
                   }
                 >
-                  <span style={{ marginTop: 10 }}>Log in</span>
+                  log in
+                  {/* <span style={{ marginTop: 10 }}>Log in</span> */}
                 </NavLink>
               )}
             </span>

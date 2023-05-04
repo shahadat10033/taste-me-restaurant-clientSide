@@ -78,10 +78,15 @@ const AuthProvider = ({ children }) => {
   // update user profile
 
   const profileUpdate = (name, image) => {
-    updateProfile(auth.currentUser, {
+    return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: image,
-    });
+    })
+      .then(() => {})
+      .catch((error) => {
+        // An error occurred
+        // ...
+      });
   };
 
   const authInfo = {

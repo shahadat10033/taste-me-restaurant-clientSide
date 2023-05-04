@@ -6,41 +6,32 @@ import { AuthContext } from "../firebase/AuthProvider";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { emailRegister, profileUpdate } = useContext(AuthContext);
+  const { emailRegister, profileUpdate, logOut } = useContext(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
     setError("");
     const form = e.target;
-    form.reset();
     const name = form.username.value;
     const image = form.photoURL.value;
     const password = form.password.value;
     const email = form.email.value;
     console.log(name, image, password, email);
-    if (/^.{0,5}$/.test(password)) {
-      setError("Type at least 6 digit");
+    // if (!/^.{0,5}$/.test(password)) {
+    //   setError("Type at least 6 digit");
 
-      return;
-    }
+    //   return;
+    // }
     emailRegister(email, password)
       .then((result) => {
         // Signed in
         const user = result.user;
-        console.log(user);
+        // setUser(user);
+        logOut();
+        profileUpdate(name, image);
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
-      });
-
-    profileUpdate(name, image)
-      .then(() => {
-        // Profile updated!
-        // ...
-      })
-      .catch((error) => {
-        // An error occurred
-        // ...
+        setError(errorMessage);
       });
 
     form.reset();
