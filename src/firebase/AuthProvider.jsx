@@ -8,12 +8,14 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 import app from "./firebase.config";
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loader, setLoader] = useState(true);
   const auth = getAuth(app);
 
   // google sign up
@@ -43,14 +45,17 @@ const AuthProvider = ({ children }) => {
   // email registration
 
   const emailRegister = (email, password) => {
+    setLoader(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   //   email sign in
   const emailLogin = (email, password) => {
+    setLoader(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   //   sign out
   const logOut = () => {
+    setLoader(true);
     signOut(auth)
       .then(() => {
         // Sign-out successful.
@@ -64,13 +69,23 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      setLoader(false);
     });
     return () => {
       return unsubscribe();
     };
   }, []);
+  // update user profile
+
+  const profileUpdate = (name, image) => {
+    updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: image,
+    });
+  };
 
   const authInfo = {
+    profileUpdate,
     googleSignUp,
     user,
     githubSignUp,
@@ -78,6 +93,7 @@ const AuthProvider = ({ children }) => {
     setUser,
     emailLogin,
     logOut,
+    loader,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

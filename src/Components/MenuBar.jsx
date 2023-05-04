@@ -3,6 +3,9 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../firebase/AuthProvider";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
+
 const MenuBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
@@ -48,7 +51,11 @@ const MenuBar = () => {
             <span className="mt-2">
               {user ? (
                 <span className="ms-5">
-                  <span className="me-2">
+                  <span
+                    className="me-2"
+                    data-tooltip-id="my-tooltip"
+                    data-tooltip-content="Hello world!"
+                  >
                     <img
                       src={user.user?.photoURL}
                       alt=""
@@ -61,6 +68,7 @@ const MenuBar = () => {
                       }}
                     />
                   </span>
+                  <Tooltip id="my-tooltip" />
                   <button className="btn btn-light " onClick={logOut}>
                     Log out
                   </button>

@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "@smastrom/react-rating/style.css";
 import { Rating } from "@smastrom/react-rating";
 import Marquee from "react-fast-marquee";
+import { Spinner } from "react-bootstrap";
 
 const RecipePage = () => {
+  const [loader, setLoader] = useState(true);
+
   const singleData = useLoaderData();
-  const notify = () => toast("wowww.its a wonderful dish!");
+  useEffect(() => {
+    if (singleData) {
+      setLoader(false);
+    }
+  }, []);
 
   return (
     <div>
+      {loader && <Spinner animation="border" variant="warning" />}
       {/* banner section */}
 
       <div className="row mb-2 text-white bg-dark">
@@ -85,7 +93,13 @@ const RecipePage = () => {
                 </p>
                 <h4>cooking method:</h4>
                 <p className="card-text">{recipe.cookingMethod}</p>
-                <button className="btn btn-primary" onClick={notify}>
+                <button
+                  className="btn btn-primary"
+                  onClick={(e) => {
+                    toast("wowww.its a wonderful dish!");
+                    e.target.disabled = true;
+                  }}
+                >
                   Favourites
                 </button>
                 <ToastContainer />

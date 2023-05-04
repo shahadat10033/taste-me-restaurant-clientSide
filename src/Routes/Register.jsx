@@ -1,20 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../firebase/AuthProvider";
 
 const Register = () => {
-  const { emailRegister, setUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const { emailRegister, profileUpdate } = useContext(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
+    setError("");
     const form = e.target;
+    form.reset();
     const name = form.username.value;
     const image = form.photoURL.value;
     const password = form.password.value;
     const email = form.email.value;
     console.log(name, image, password, email);
+    if (/^.{0,5}$/.test(password)) {
+      setError("Type at least 6 digit");
 
+      return;
+    }
     emailRegister(email, password)
       .then((result) => {
         // Signed in
@@ -25,6 +32,17 @@ const Register = () => {
         const errorMessage = error.message;
         console.log(errorMessage);
       });
+
+    profileUpdate(name, image)
+      .then(() => {
+        // Profile updated!
+        // ...
+      })
+      .catch((error) => {
+        // An error occurred
+        // ...
+      });
+
     form.reset();
   };
   return (
@@ -76,9 +94,7 @@ const Register = () => {
               placeholder="Password"
               required
             />
-            <Form.Text className="text-danger">
-              We will never share your email with anyone else.
-            </Form.Text>
+            <Form.Text className="text-danger">{error}</Form.Text>
           </Form.Group>
 
           <Button variant="primary" type="submit">

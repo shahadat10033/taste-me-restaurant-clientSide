@@ -1,29 +1,36 @@
 import React, { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
+import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 
 const ChefSection = () => {
   const [allData, setAllData] = useState([]);
+  const [loader, setLoader] = useState(true);
   useEffect(() => {
     fetch("http://localhost:5000/data/")
       .then((res) => res.json())
       .then((data) => {
+        setLoader(false);
         setAllData(data);
       });
   }, []);
   return (
     <div className=" bg-light row  py-2">
+      {loader && <Spinner animation="border" variant="warning" />}
       {allData.map((data) => (
         <div className="col-md-4" key={data.id}>
           <div className=" bg-dark text-light rounded-4 mb-4 ms-1">
             <h3 className="pb-5 text-center">{data.chefName}</h3>
             <div className="row r ">
               <div className="col-md-6">
-                <img
-                  src={data.chefPicture}
-                  alt=""
-                  className=" me-3"
-                  style={{ width: "130px", height: "200px" }}
-                ></img>
+                <LazyLoad offset={500} width={800} threshold={0.55}>
+                  <img
+                    src={data.chefPicture}
+                    alt=""
+                    className=" me-3"
+                    style={{ width: "130px", height: "200px" }}
+                  ></img>
+                </LazyLoad>
               </div>
               <div className="col-md-6">
                 <p className="fw-semibold pb-4">

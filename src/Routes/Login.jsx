@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../firebase/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState("");
   const { googleSignUp, githubSignUp, emailLogin, setUser } =
     useContext(AuthContext);
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Login = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        setError(errorMessage);
       });
   };
 
@@ -79,9 +80,7 @@ const Login = () => {
               placeholder="Password"
               required
             />
-            <Form.Text className="text-danger">
-              We will never share your email with anyone else.
-            </Form.Text>
+            <Form.Text className="text-danger">{error}</Form.Text>
           </Form.Group>
 
           <Button variant="primary" type="submit">
