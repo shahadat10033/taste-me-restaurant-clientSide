@@ -18,4 +18,4 @@ Documentation Link -> [Link](https://react-bootstrap.github.io/getting-started/i
 
 - React-Awesome-Component
 
-Github Link -> [Link](https://github.com/brillout/awesome-react-components)
+Link -> [Link](https://github.com/brillout/awesome-react-components)

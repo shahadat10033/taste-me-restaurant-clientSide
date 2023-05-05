@@ -1,11 +1,11 @@
 import React from "react";
 
-const About = () => {
+const Story = () => {
   return (
     <div className="row bg-dark text-light">
       <div className="col-md-6 text-center ">
         <h3 className="text-warning fst-italic fs-3 mt-5 pt-5 ">Our story</h3>
-        <h3 className="text-light fw-bold fs-1 py-2">ABOUT US</h3>
+        <h3 className="text-light fw-bold fs-1 py-2">WHO WE ARE</h3>
         <hr className="text-light" />
         <p className="text-warning  py-5">
           Discover Your New Favorite Dining Destination.
@@ -70,4 +70,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Story;
