@@ -5,7 +5,7 @@ import Stats from "../Components/Stats";
 import Story from "../Components/Story";
 const Home = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Banner></Banner>
       <ChefSection></ChefSection>
       <Story></Story>
